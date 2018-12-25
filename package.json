@@ -1,0 +1,32 @@
+{
+  "name": "whatcss",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "APACHE",
+  "dependencies": {
+    "clean-css": "^4.2.1",
+    "compression": "^1.7.3",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
+    "morgan": "^1.9.1",
+    "puppeteer": "^1.11.0",
+    "serve-favicon": "^2.5.0",
+    "url-parse": "^1.4.4"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.10.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1"
+  },
+  "engines": {
+    "node": ">10.1.0"
+  }
+}

@@ -1,0 +1,141 @@
+
+<div class="jumbotron">
+  <div class="card bg-dark">
+    <div class="card-header">
+      <h1 style="color: white; text-align: center">CSS StyleSheet Page Load Analyser</h1>
+    </div>
+    <div class="card-body bg-dark">
+      <form action="/getcss" method="GET">
+        <div class="form-group">
+          <input type="text" name="page" class="form-control" id="exampleFormControlInput1" placeholder="https://i❤️.ws">
+        </div>
+        <div style="text-align: right">
+          <button type="submit" class="btn btn-primary mb-2">Analyse</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<br/>
+<div class="card">
+  <div class="card-header">
+    <h2>Recently Tested</h2>
+  </div>
+  <div class="card-body" style="overflow-x: scroll; height: 300px; overflow-y: hidden;">
+    <div style="width: 1000px;">
+      <div class="card" style="width: 15rem; float: left; margin-right: 15px;">
+        <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"></rect><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+      </div>
+      <div class="card" style="width: 15rem; float: left; margin-right: 15px;">
+        <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"></rect><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+      </div>
+      <div class="card" style="width: 15rem; float: left; margin-right: 15px">
+        <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"></rect><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+      </div>
+      <div class="card" style="width: 15rem; float: left; margin-right: 15px">
+        <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"></rect><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br/>
+<div class="card">
+  <div class="card-header">
+    <h2>About WhatCSS.info</h2>
+  </div>
+  <div class="card-body">
+    <p>
+      Only a tiny bit of the CSS you send to the browser is required
+      to display your page.
+    </p>
+    <p>
+      <strong>WhatCSS.info</strong> is a free, opensource css page load analyser and optimizer.
+      Brought to you by your friends at
+      <a href="https://i❤️.ws" title="Emoji Domains">i❤️.ws emoji domains</a>,
+      the app allows you to easily see what CSS stylesheets are required to
+      display your site.
+    </p>
+
+    <p>
+      Wasteful delivery of CSS is bringing you down.
+      Pagespeed is an important metric: it affects sales, SEO, user experience, etc...
+
+    </p>
+    <p>
+      <strong>WhatCSS.info automatically generates a minified version of the bare minimum
+      CSS a user needs to begin interacting with your site.</strong>
+      Armed with that minified CSS -- often a tiny fraction of the size of
+      your site's total CSS load, especially if you're using a WordPress or
+      Bootstrap them -- it's trivial to just load the styles you need, defer the
+      rest of the CSS until after the page renders.
+    </p>
+    <p>
+      Chrome DevTools already captures CSS usage, but lacks the ability to easily
+      output and make sense of results. WhatCSS uses
+      <a href="https://github.com/GoogleChrome/puppeteer" title="Puppeteer: Headless Chrome Node API">Puppeteer</a>,
+      Google's Headless Chrome Node API, to control a remote browser instance, navigate to
+      a site, and return which stylesheets are in use when the page is fully loaded.
+    </p>
+    <p>
+      WhatCSS.info is essentially a wrapper around that DevTools process, allowing you
+      to easily see the output and, more importantly, do something with it.
+    </p>
+    <p>
+      CSS Minification provided by
+      <a href="https://github.com/jakubpawlowicz/clean-css" title"Clean-CSS CSS Minification">clean-css</a>.
+    </p>
+  </div>
+</div>
+<br/>
+<div class="card">
+  <div class="card-header">
+    <h2>API</h2>
+  </div>
+  <div class="card-body">
+    <p>
+      Given that WhatCSS.info is itself a wrapper around an API, it's appropriate
+      that there should be an API to that API.
+    </p>
+  </div>
+</div>
+
+<br/>
+<div class="card">
+  <div class="card-header">
+    <h2>Usage</h2>
+  </div>
+  <div class="card-body">
+    <p>
+      We recommend taking the output from WhatCSS.info and putting inline,
+      then deferring the other CSS until later. At le
+    </p>
+  </div>
+</div>
+<br/>
+<div class="card">
+  <div class="card-header">
+    <h2>Contact Us</h2>
+  </div>
+  <div class="card-body">
+    <p>
+      Wanna contribute? Fork WhatCSS.info Github!
+    </p>
+  </div>
+</div>
+<br/>
