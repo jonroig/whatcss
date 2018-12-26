@@ -18,30 +18,36 @@
 </div>
 
 {{#if config.screenShots.active}}
-  <br/>
   <div class="card">
     <div class="card-header">
       <h2>Recently Tested</h2>
     </div>
-    <div class="card-body" style="overflow-x: scroll; height: 350px; overflow-y: hidden;">
-      <div style="width: 2500px">
-        {{#each screenshotArray}}
-          <div class="card" style="width: 15rem; float: left; margin-right: 15px; margin-bottom: 20px;">
-            <img src="/img/{{id}}" style="height: 180px;" title="{{thePage}} CSS analysis">
-            <div class="card-body">
-              <h5 class="card-title" style="overflow: hidden; height: 22px;">
-                <a href="/getcss?page={{urlEncodedPage}}">{{thePage}}</a>
-              </h5>
-              <p class="card-text">
-                Original CSS Size: {{originalSize}}<br/>
-                Bootsize: {{newSize}} ({{percentage}}%)
-              </p>
+    <div class="card-body" style="overflow-x: scroll; overflow-y: hidden; height: 325px;">
+      <div class="container-fluid">
+        <div class="row flex-row flex-nowrap">
+          {{#each screenshotArray}}
+            <div class="col-10 col-sm-4 col-md-4 col-lg-3">
+              <div class="card card-block">
+                <img src="/img/{{id}}" style="height: 180px;" title="{{thePage}} CSS analysis">
+                <div class="card-body">
+                  <h5 class="card-title" style="overflow: hidden; height: 22px;">
+                    <a href="/getcss?page={{urlEncodedPage}}">{{thePage}}</a>
+                  </h5>
+                  <p class="card-text">
+                    Original CSS Size: {{originalSize}}<br/>
+                    Bootsize: {{newSize}} ({{percentage}}%)
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
-        {{/each}}
+          {{/each}}
+
+        </div>
       </div>
     </div>
-  </div>
+
+
+
 {{/if}}
 
 <br/>

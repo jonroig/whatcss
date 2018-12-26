@@ -5,16 +5,30 @@
   <div class="card-body">
     <h2>Results for: {{thePage}}</h2>
     <p>
-      WhatCSS.info is a free, opensource css page load analyser and optimizer.
-      Brought to you by your friends at
-      <a href="https://i❤️.ws" title="Emoji Domains">i❤️.ws emoji domains</a>,
-      WhatCSS uses
-      <a href="https://github.com/GoogleChrome/puppeteer" title="Puppeteer: Headless Chrome Node API">Puppeteer</a>,
-      Google's Headless Chrome Node API, to control a browser instance, navigate to
-      a site, and return which stylesheets are in use when the page is fully loaded.
+      <br/>include: {{#each results.includeArray}}{{this}}{{/each}}
+      <br/>exclude: {{#each results.excludeArray}}{{this}}{{/each}}
+    </p>
+    <h3>StyleSheets</h3>
+    <p>
+
+      {{#each results.styleSheets}}
+        <p>
+          styleSheetId: {{this.styleSheetId}}<br/>
+          sourceURL: {{this.sourceURL}}<br/>
+          origin: {{this.origin}}<br/>
+          disabled: {{this.disabled}}<br/>
+          isInline: {{this.isInline}}<br/>
+          length: {{this.length}}
+        </p>
+      {{/each}}
+    </p>
+    <h3>BootCSS</h3>
+    <p>
+      Original Size: {{results.originalSize}}<br/>
+      BootCSS Size: {{results.bootSize}} ({{results.percentage}}%)<br/>
     </p>
     <p>
-      An explanation of stuff goes here.
+      <textarea style="width: 100%; height: 200px;">{{results.bootCSS}}</textarea>
     </p>
   </div>
 </div>

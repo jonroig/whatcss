@@ -83,10 +83,16 @@ app.get('/getcss', (req, res) => {
     if (theFormat === 'json') {
       return res.send(results);
     }
-    console.log('results', results);
+
+    const output = {
+      ...results,
+      percentage: ((results.bootSize / results.originalSize) * 100).toFixed(2),
+      urlEncodedPage: encodeURIComponent(results.thePage),
+    };
+    console.log('output', output);
     return res.render('results', {
       thePage,
-      results,
+      results: output,
     });
   });
 });
