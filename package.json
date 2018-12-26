@@ -9,6 +9,7 @@
   "author": "",
   "license": "APACHE",
   "dependencies": {
+    "base-64": "^0.1.0",
     "clean-css": "^4.2.1",
     "compression": "^1.7.3",
     "express": "^4.16.4",
@@ -16,6 +17,7 @@
     "morgan": "^1.9.1",
     "puppeteer": "^1.11.0",
     "serve-favicon": "^2.5.0",
+    "sqlite3": "^4.0.4",
     "url-parse": "^1.4.4"
   },
   "devDependencies": {

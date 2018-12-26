@@ -1,5 +1,5 @@
 /**
-WhatCSS.info
+WhatCSS
 ... a CSS analyser and minification helper.
 
 * Copyright 2018 Jon Roig. All rights reserved.
@@ -21,7 +21,12 @@ const compression = require('compression');
 const morgan = require('morgan');
 const exphbs = require('express-handlebars');
 const favicon = require('serve-favicon');
+const sqlite3 = require('sqlite3').verbose();
+const base64 = require('base-64');
+
+const config = require('./config');
 const fetchCSS = require('./lib/fetchCSS');
+const screenshotDb = new sqlite3.Database('./db/screenshots.db');
 
 
 // app setup...
@@ -44,6 +49,7 @@ app.get('/getcss', (req, res) => {
   let thePage = req.query.page || false;
   const theFormat = req.query.format || false;
   const includeString = req.query.include || false;
+  const excludeString = req.query.exclude || false;
   if (!thePage) {
     return res.redirect(301, '/getcss?page=whatcss.info');
   }
@@ -51,7 +57,17 @@ app.get('/getcss', (req, res) => {
     thePage = `http://${thePage}`;
   }
 
-  return fetchCSS.get(thePage, includeString).then((results) => {
+  return fetchCSS.get(thePage, includeString, excludeString).then((results) => {
+    if (results.err) {
+      if (theFormat === 'json') {
+        return res.send({
+          error: results.err.message,
+        });
+      }
+
+      return res.send(`Error: ${results.err.message}`);
+    }
+
     if (theFormat === 'json') {
       return res.send(results);
     }
@@ -63,7 +79,23 @@ app.get('/getcss', (req, res) => {
 });
 
 
-// console
-const thePort = 3000;
-app.listen(thePort);
-console.log(`App started on port ${thePort}`);
+app.get('/img/:id', (req, res) => {
+  var imgId = req.params.id || false;
+  if (!imgId) {
+    return res.send();
+  }
+
+  const selectSQL = 'SELECT pngData from screenshots WHERE id = ?';
+  screenshotDb.all(selectSQL, [imgId], (err, rows) => {
+    if (err || !rows[0] || !rows[0].pngData) {
+      console.log(err || 'no img data');
+      return res.send();
+    }
+
+    return res.type('image/png').send(base64.decode(rows[0].pngData));
+  });
+});
+
+// start the app
+app.listen(config.serverPort);
+console.log(`WhatCSS started on port ${config.serverPort}`);
