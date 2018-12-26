@@ -39,9 +39,21 @@ app.use(favicon(`${__dirname}/webcontent/favicon.ico`));
 
 
 // home
-app.get('/', (req, res) => (
-  res.render('home', {})
-));
+app.get('/', (req, res) => {
+  const selectSQL = 'SELECT id, dateTS, thePage, originalSize, newSize FROM screenshots ORDER BY dateTS DESC';
+  screenshotDb.all(selectSQL, [], (err, rows) => {
+    const screenshotArray = rows.map(row => ({
+      ...row,
+      percentage: ((row.newSize / row.originalSize) * 100).toFixed(2),
+      urlEncodedPage: encodeURIComponent(row.thePage),
+    }));
+
+    res.render('home', {
+      config,
+      screenshotArray,
+    });
+  })
+});
 
 
 // the analyser
@@ -71,14 +83,16 @@ app.get('/getcss', (req, res) => {
     if (theFormat === 'json') {
       return res.send(results);
     }
-
+    console.log('results', results);
     return res.render('results', {
       thePage,
+      results,
     });
   });
 });
 
-
+// access images from screenshots...
+// they're stored in a sqlite db
 app.get('/img/:id', (req, res) => {
   var imgId = req.params.id || false;
   if (!imgId) {
@@ -91,8 +105,8 @@ app.get('/img/:id', (req, res) => {
       console.log(err || 'no img data');
       return res.send();
     }
-
-    return res.type('image/png').send(base64.decode(rows[0].pngData));
+    const img = Buffer.from(rows[0].pngData, 'base64');
+    return res.type('image/png').send(img);
   });
 });
 

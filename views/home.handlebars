@@ -16,44 +16,34 @@
     </div>
   </div>
 </div>
-<br/>
-<div class="card">
-  <div class="card-header">
-    <h2>Recently Tested</h2>
-  </div>
-  <div class="card-body" style="overflow-x: scroll; height: 300px; overflow-y: hidden;">
-    <div style="width: 1000px;">
-      <div class="card" style="width: 15rem; float: left; margin-right: 15px;">
-        <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"></rect><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-      </div>
-      <div class="card" style="width: 15rem; float: left; margin-right: 15px;">
-        <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"></rect><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-      </div>
-      <div class="card" style="width: 15rem; float: left; margin-right: 15px">
-        <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"></rect><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-      </div>
-      <div class="card" style="width: 15rem; float: left; margin-right: 15px">
-        <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"></rect><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
+
+{{#if config.screenShots.active}}
+  <br/>
+  <div class="card">
+    <div class="card-header">
+      <h2>Recently Tested</h2>
+    </div>
+    <div class="card-body" style="overflow-x: scroll; height: 350px; overflow-y: hidden;">
+      <div style="width: 2500px">
+        {{#each screenshotArray}}
+          <div class="card" style="width: 15rem; float: left; margin-right: 15px; margin-bottom: 20px;">
+            <img src="/img/{{id}}" style="height: 180px;" title="{{thePage}} CSS analysis">
+            <div class="card-body">
+              <h5 class="card-title" style="overflow: hidden; height: 22px;">
+                <a href="/getcss?page={{urlEncodedPage}}">{{thePage}}</a>
+              </h5>
+              <p class="card-text">
+                Original CSS Size: {{originalSize}}<br/>
+                Bootsize: {{newSize}} ({{percentage}}%)
+              </p>
+            </div>
+          </div>
+        {{/each}}
       </div>
     </div>
   </div>
-</div>
+{{/if}}
+
 <br/>
 <div class="card">
   <div class="card-header">
@@ -102,6 +92,7 @@
     </p>
   </div>
 </div>
+
 <br/>
 <div class="card">
   <div class="card-header">
@@ -134,7 +125,8 @@
   </div>
   <div class="card-body">
     <p>
-      Wanna contribute? Fork WhatCSS.info Github!
+      Twitter: <a href="https://twitter.com/emoji_domains" title="Emoji Domains on Twitter">@emoji_domains</a><br/>
+      Github: <a href="https://github.com/jonroig/whatcss.info" title="WhatCSS.info: CSS StyleSheet Pageload Analyser/Optimizer on Github">github.com/jonroig/whatcss.info</a>
     </p>
   </div>
 </div>
