@@ -7,7 +7,14 @@
     <div class="card-body bg-dark">
       <form action="/getcss" method="GET">
         <div class="form-group">
-          <input type="text" name="page" class="form-control" id="exampleFormControlInput1" placeholder="https://whatcss.info">
+          <input
+            type="text"
+            name="page"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="https://whatcss.info"
+          >
+          <input type="hidden" name="exclude" value="www.facebook.com,platform.twitter.com,www.google.com" />
         </div>
         <div style="text-align: right">
           <button type="submit" class="btn btn-primary mb-2">Analyse</button>
@@ -17,7 +24,7 @@
   </div>
 </div>
 
-{{#if config.screenShots.active}}
+{{#if config.screenshotsArchive.active}}
   <div class="card">
     <div class="card-header">
       <h2>Recently Tested</h2>

@@ -1,6 +1,6 @@
 const config = {
   serverPort: 3000,
-  screenShots: {
+  screenshotsArchive: {
     active: true,
     numberToArchive: 6,
     width: 1280,

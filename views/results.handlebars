@@ -4,6 +4,9 @@
   </div>
   <div class="card-body">
     <h2>Results for: {{thePage}}</h2>
+    <div style="text-align: center">
+      <img src="data:image/png;base64,{{results.screenshotPng}}" style="width: 100%; border: 1px solid black;"/>
+    </div>
     <p>
       <br/>include: {{#each results.includeArray}}{{this}}{{/each}}
       <br/>exclude: {{#each results.excludeArray}}{{this}}{{/each}}

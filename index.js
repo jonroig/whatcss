@@ -22,10 +22,10 @@ const morgan = require('morgan');
 const exphbs = require('express-handlebars');
 const favicon = require('serve-favicon');
 const sqlite3 = require('sqlite3').verbose();
-const base64 = require('base-64');
 
 const config = require('./config');
 const fetchCSS = require('./lib/fetchCSS');
+
 const screenshotDb = new sqlite3.Database('./db/screenshots.db');
 
 
@@ -69,7 +69,7 @@ app.get('/getcss', (req, res) => {
     thePage = `http://${thePage}`;
   }
 
-  return fetchCSS.get(thePage, includeString, excludeString).then((results) => {
+  return fetchCSS.get(thePage, includeString, excludeString, theFormat !== 'json').then((results) => {
     if (results.err) {
       if (theFormat === 'json') {
         return res.send({
@@ -100,7 +100,7 @@ app.get('/getcss', (req, res) => {
 // access images from screenshots...
 // they're stored in a sqlite db
 app.get('/img/:id', (req, res) => {
-  var imgId = req.params.id || false;
+  const imgId = req.params.id || false;
   if (!imgId) {
     return res.send();
   }
