@@ -73,15 +73,15 @@
       <strong>WhatCSS.info automatically generates a minified version of the bare minimum
       CSS a user needs to begin interacting with your site.</strong>
       Dramatically shrink WordPress, Shopify, and Bootstrap themes!
-      Decrease load time! Improve Pagespeed for SEO!
+      Decrease load time! <a
+        href="https://developers.google.com/speed/docs/insights/OptimizeCSSDelivery"
+      >Optimize CSS delivery</a> for SEO!
     </p>
     <p>
       Wasteful delivery of CSS is bringing you down.
     </p>
     <p>
-      Why make users wait? Especially if you're using a publicly available
-      WordPress or Bootstrap theme, most of the stylesheet css is for widgets
-      your users will never see.
+      Why make users wait?
     </p>
   </div>
 </div>
@@ -187,11 +187,12 @@
         Determine what stylesheets are being used from the Bootstrap CDN.
         <br/>
         <code>
-          https://whatcss.info?page=https://whatcss.info&include=stackpath.bootstrapcdn.com
+          https://whatcss.info?page=https://whatcss.info&include=stackpath.bootstrapcdn.com&exclude=inline
         </code>
       </li>
       <li>
         Insert the BootCSS into the HEAD of the document.
+        The resulting CSS was 4.48% of the original size of Bootstrap.
       </li>
       <li>
         Defer Bootstrap using the <a
@@ -200,7 +201,7 @@
       </li>
     </ol>
     <p>
-      Easy enough, right?
+      Easy enough, right? Took about 5 mins... made a huge difference.
     </p>
   </div>
 </div>
