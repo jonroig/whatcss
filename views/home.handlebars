@@ -14,7 +14,7 @@
             id="exampleFormControlInput1"
             placeholder="https://whatcss.info"
           >
-          <input type="hidden" name="exclude" value="www.facebook.com,platform.twitter.com,www.google.com" />
+          <input type="hidden" name="exclude" value="www.facebook.com,platform.twitter.com,www.google.com,apis.google.com" />
         </div>
         <div style="text-align: right">
           <button type="submit" class="btn btn-primary mb-2">Analyse</button>
@@ -27,7 +27,7 @@
 {{#if config.screenshotsArchive.active}}
   <div class="card">
     <div class="card-header">
-      <h2>Recently Tested</h2>
+      <h2>Recent</h2>
     </div>
     <div class="card-body" style="overflow-x: scroll; overflow-y: hidden; height: 325px;">
       <div class="container-fluid">
@@ -42,7 +42,7 @@
                   </h5>
                   <p class="card-text">
                     Original CSS Size: {{originalSize}}<br/>
-                    Bootsize: {{newSize}} ({{percentage}}%)
+                    <strong>Bootsize: {{newSize}} ({{percentage}}%)</strong>
                   </p>
                 </div>
               </div>
@@ -60,49 +60,110 @@
 <br/>
 <div class="card">
   <div class="card-header">
-    <h2>About WhatCSS.info</h2>
+    <h2>WhatCSS: You are Wasting CSS!</h2>
   </div>
   <div class="card-body">
     <p>
-      Only a tiny bit of the CSS you send to the browser is required
-      to display your page.
+      <strong>Shrink your initial CSS page load by up to 94%?</strong>
     </p>
     <p>
       <strong>WhatCSS.info</strong> is a free, opensource css page load analyser and optimizer.
       Brought to you by your friends at
       <a href="https://i❤️.ws" title="Emoji Domains">i❤️.ws emoji domains</a>,
-      the app allows you to easily see what CSS stylesheets are required to
+      the app allows you to easily see what CSS styles are required to
       display your site.
-    </p>
-
-    <p>
-      Wasteful delivery of CSS is bringing you down.
-      Pagespeed is an important metric: it affects sales, SEO, user experience, etc...
-
     </p>
     <p>
       <strong>WhatCSS.info automatically generates a minified version of the bare minimum
       CSS a user needs to begin interacting with your site.</strong>
-      Armed with that minified CSS -- often a tiny fraction of the size of
-      your site's total CSS load, especially if you're using a WordPress or
-      Bootstrap them -- it's trivial to just load the styles you need, defer the
-      rest of the CSS until after the page renders.
+      Dramatically shrink WordPress, Shopify, and Bootstrap themes!
+      Decrease load time! Improve Pagespeed for SEO!
     </p>
     <p>
-      Chrome DevTools already captures CSS usage, but lacks the ability to easily
+      Wasteful delivery of CSS is bringing you down.
+    </p>
+    <p>
+      Why make users wait? Especially if you're using a publicly available
+      WordPress or Bootstrap theme, most of the stylesheet css is for widgets
+      your users will never see.
+    </p>
+  </div>
+</div>
+
+<br/>
+<div class="card">
+  <div class="card-header">
+    <h2>How Does WhatCSS Work?</h2>
+  </div>
+  <div class="card-body">
+    <p>
+      WhatCSS is essentially a wrapper of an instance of Chrome running
+      on a remote server.
+    </p>
+    <p>
+      Chrome DevTools already captures CSS usage, but the browser lacks the ability to easily
       output and make sense of results. WhatCSS uses
       <a href="https://github.com/GoogleChrome/puppeteer" title="Puppeteer: Headless Chrome Node API">Puppeteer</a>,
       Google's Headless Chrome Node API, to control a remote browser instance, navigate to
       a site, and return which stylesheets are in use when the page is fully loaded.
     </p>
     <p>
-      WhatCSS.info is essentially a wrapper around that DevTools process, allowing you
-      to easily see the output and, more importantly, do something with it.
+      WhatCSS.info takes those results from Chrome, applies extra minification,
+      and presents your CSS in a readable form.
     </p>
     <p>
       CSS Minification provided by
       <a href="https://github.com/jakubpawlowicz/clean-css" title"Clean-CSS CSS Minification">clean-css</a>.
     </p>
+  </div>
+</div>
+
+<br/>
+<div class="card">
+  <div class="card-header">
+    <h2>Usage</h2>
+  </div>
+  <div class="card-body">
+    <p>
+      That's up to you.
+    </p>
+    <p>
+      Armed with the BootCSS minified CSS output -- often a tiny fraction of the size of
+      your site's total CSS load, especially if you're using a WordPress or
+      Bootstrap theme -- it's trivial to just load the styles you need, defer the
+      rest of the CSS until after the page renders.
+    </p>
+    <p>
+      In some cases -- a simple site like
+      <a href="https://WhatCSS.info" title="What CSS Does My Site Need At Load?">WhatCSS.info</a>
+      -- the BootCSS is all the site needs to be fully functional. With only 5% of the
+      original CSS from the standard Bootstrap 4 distribution needed to use the site,
+      we just put the CSS inline.
+    </p>
+    <p>
+      Good enough for a technology demo, maybe doesn't quite meet your actual needs.
+    </p>
+    <p>
+      An easy variation of this might be to inline the BootCSS and defer the
+      load of the rest of the CSS. This way, the page becomes immediately
+      interactive, but the styles needed for additional interaction
+      come along shortly thereafter.
+    </p>
+    <p>
+      This approach also alleviates the need to make any hard choices when it comes
+      to cutting CSS, especially if you're just loading something off a CDN.
+    </p>
+    <p>
+      With an API and whatnot, WhatCSS can be integrated to a build process,
+      automating the BootCSS generation.
+    </p>
+    <p>
+      More sophisticated users might want to divide their CSS into two parts,
+      the first, essential for displaying the site, and then the rest of the stuff.
+      With both files on a CDN, the second can be safely deferred... or even
+      sub divided into tiny, chunked deferred pieces.
+    </p>
+
   </div>
 </div>
 
@@ -116,21 +177,41 @@
       Given that WhatCSS.info is itself a wrapper around an API, it's appropriate
       that there should be an API to that API.
     </p>
+    <p>
+      Pretty straightforward: just append "&format=json" to the URL
+      and it'll... return JSON.
+    </p>
+
+    <code>
+      https://whatcss.info/getcss?page=https://whatcss.info&format=json
+    </code>
+
+    <br/><br/>
+    <h4>Filters</h4>
+    <p>
+      Since WhatCSS grabs all the CSS currently in use by your browser, the API
+      provides a way to either explicitly include or ignore CSS stylesheets
+      from different origins.
+    </p>
+    <p>
+      For instance, CSS from Facebook, Twitter,
+      or Google is almost always rendered by a custom component... and since
+      that's out of your control, optimizing that CSS might be best left
+      to the vendor who included that CSS. (Or, for that matter, those styles
+      might not interfere with your page load at all.)
+    </p>
+    <p>
+      <strong>include/exclude:</strong> comma separated list of domains or 'inline'
+      <br/>
+    </p>
+    <code>
+      https://whatcss.info/getcss?page=https://whatcss.info&format=json&include=domain1.com,domain2.com,inline
+    </code>
+
   </div>
+
 </div>
 
-<br/>
-<div class="card">
-  <div class="card-header">
-    <h2>Usage</h2>
-  </div>
-  <div class="card-body">
-    <p>
-      We recommend taking the output from WhatCSS.info and putting inline,
-      then deferring the other CSS until later. At le
-    </p>
-  </div>
-</div>
 <br/>
 <div class="card">
   <div class="card-header">

@@ -7,6 +7,9 @@ const config = {
     height: 1024,
     deviceScaleFactor: 2,
   },
+  minification: {
+    level: 2,
+  },
 };
 
 module.exports = config;

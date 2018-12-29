@@ -89,7 +89,7 @@ app.get('/getcss', (req, res) => {
       percentage: ((results.bootSize / results.originalSize) * 100).toFixed(2),
       urlEncodedPage: encodeURIComponent(results.thePage),
     };
-    console.log('output', output);
+
     return res.render('results', {
       thePage,
       results: output,
