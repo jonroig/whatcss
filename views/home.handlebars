@@ -48,17 +48,13 @@
               </div>
             </div>
           {{/each}}
-
         </div>
       </div>
     </div>
-
-
-
 {{/if}}
 
 <br/>
-<div class="card">
+<div class="card" id="what">
   <div class="card-header">
     <h2>WhatCSS: You are Wasting CSS!</h2>
   </div>
@@ -91,7 +87,7 @@
 </div>
 
 <br/>
-<div class="card">
+<div class="card" id="how">
   <div class="card-header">
     <h2>How Does WhatCSS Work?</h2>
   </div>
@@ -103,7 +99,9 @@
     <p>
       Chrome DevTools already captures CSS usage, but the browser lacks the ability to easily
       output and make sense of results. WhatCSS uses
-      <a href="https://github.com/GoogleChrome/puppeteer" title="Puppeteer: Headless Chrome Node API">Puppeteer</a>,
+      <a
+        href="https://github.com/GoogleChrome/puppeteer"
+        title="Puppeteer: Headless Chrome Node API">Puppeteer</a>,
       Google's Headless Chrome Node API, to control a remote browser instance, navigate to
       a site, and return which stylesheets are in use when the page is fully loaded.
     </p>
@@ -113,22 +111,24 @@
     </p>
     <p>
       CSS Minification provided by
-      <a href="https://github.com/jakubpawlowicz/clean-css" title"Clean-CSS CSS Minification">clean-css</a>.
+      <a
+        href="https://github.com/jakubpawlowicz/clean-css"
+        title"Clean-CSS CSS Minification">clean-css</a>.
     </p>
   </div>
 </div>
 
 <br/>
-<div class="card">
+<div class="card" id="usage">
   <div class="card-header">
-    <h2>Usage</h2>
+    <h2>WhatCSS Usage</h2>
   </div>
   <div class="card-body">
     <p>
       That's up to you.
     </p>
     <p>
-      Armed with the BootCSS minified CSS output -- often a tiny fraction of the size of
+      Armed with the minified BootCSS output -- often a tiny fraction of the size of
       your site's total CSS load, especially if you're using a WordPress or
       Bootstrap theme -- it's trivial to just load the styles you need, defer the
       rest of the CSS until after the page renders.
@@ -154,23 +154,62 @@
       to cutting CSS, especially if you're just loading something off a CDN.
     </p>
     <p>
-      With an API and whatnot, WhatCSS can be integrated to a build process,
+      With WhatCSS having an API and being opensource and whatnot,
+      it can be integrated to a build process,
       automating the BootCSS generation.
     </p>
     <p>
       More sophisticated users might want to divide their CSS into two parts,
-      the first, essential for displaying the site, and then the rest of the stuff.
-      With both files on a CDN, the second can be safely deferred... or even
-      sub divided into tiny, chunked deferred pieces.
+      the first, the BootCSS, essential for displaying the site, and then the
+      rest of the stuff. With both files on a CDN, the second can be safely
+      deferred... or even sub divided into tiny, chunked deferred pieces.
     </p>
-
   </div>
 </div>
 
 <br/>
-<div class="card">
+<div class="card" id="optimize">
   <div class="card-header">
-    <h2>API</h2>
+    <h2>1-2-3: How We Optimized WhatCSS.info</h2>
+  </div>
+  <div class="card-body">
+    <p>
+      Like all things SEO, we followed the
+      <a
+        href="https://developers.google.com/speed/docs/insights/OptimizeCSSDelivery"
+      >Google PageSpeed Insights Guide to Optimizing CSS Delivery</a>.
+    </p>
+    <p>
+      (View the source of this page to see an example.)
+    </p>
+    <ol>
+      <li>
+        Determine what stylesheets are being used from the Bootstrap CDN.
+        <br/>
+        <code>
+          https://whatcss.info?page=https://whatcss.info&include=stackpath.bootstrapcdn.com
+        </code>
+      </li>
+      <li>
+        Insert the BootCSS into the HEAD of the document.
+      </li>
+      <li>
+        Defer Bootstrap using the <a
+          href="https://developers.google.com/speed/docs/insights/OptimizeCSSDelivery"
+        >Google CSS Optimization JavaScript example</a>.
+      </li>
+    </ol>
+    <p>
+      Easy enough, right?
+    </p>
+  </div>
+</div>
+<br/>
+
+<br/>
+<div class="card" id="api">
+  <div class="card-header">
+    <h2>What CSS API</h2>
   </div>
   <div class="card-body">
     <p>
@@ -186,8 +225,18 @@
       https://whatcss.info/getcss?page=https://whatcss.info&format=json
     </code>
 
-    <br/><br/>
-    <h4>Filters</h4>
+    <br/>
+  </div>
+
+</div>
+
+
+<br/>
+<div class="card" id="filters">
+  <div class="card-header">
+    <h2>WhatCSS Filters</h2>
+  </div>
+  <div class="card-body">
     <p>
       Since WhatCSS grabs all the CSS currently in use by your browser, the API
       provides a way to either explicitly include or ignore CSS stylesheets
@@ -207,13 +256,12 @@
     <code>
       https://whatcss.info/getcss?page=https://whatcss.info&format=json&include=domain1.com,domain2.com,inline
     </code>
-
   </div>
-
 </div>
+<br/>
 
 <br/>
-<div class="card">
+<div class="card" id="contact">
   <div class="card-header">
     <h2>Contact Us</h2>
   </div>

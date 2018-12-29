@@ -7,31 +7,118 @@
     <div style="text-align: center">
       <img src="data:image/png;base64,{{results.screenshotPng}}" style="width: 100%; border: 1px solid black;"/>
     </div>
-    <p>
-      <br/>include: {{#each results.includeArray}}{{this}}{{/each}}
-      <br/>exclude: {{#each results.excludeArray}}{{this}}{{/each}}
-    </p>
-    <h3>StyleSheets</h3>
-    <p>
 
-      {{#each results.styleSheets}}
+    <br/><br/>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>BootCSS</h3>
+      </div>
+      <div class="card-body">
         <p>
-          styleSheetId: {{this.styleSheetId}}<br/>
-          sourceURL: {{this.sourceURL}}<br/>
-          origin: {{this.origin}}<br/>
-          disabled: {{this.disabled}}<br/>
-          isInline: {{this.isInline}}<br/>
-          length: {{this.length}}
+          Original Size: {{results.originalSize}}<br/>
+          BootCSS Size: {{results.bootSize}} ({{results.percentage}}%)<br/>
         </p>
-      {{/each}}
-    </p>
-    <h3>BootCSS</h3>
-    <p>
-      Original Size: {{results.originalSize}}<br/>
-      BootCSS Size: {{results.bootSize}} ({{results.percentage}}%)<br/>
-    </p>
-    <p>
-      <textarea style="width: 100%; height: 200px;">{{results.bootCSS}}</textarea>
-    </p>
+        <p>
+          <textarea style="width: 100%; height: 200px;">{{results.bootCSS}}</textarea>
+        </p>
+      </div>
+    </div>
+    <br/>
+
+    <br/>
+    <div class="card">
+      <div class="card-header">
+        <h3>Active StyleSheets</h3>
+      </div>
+      <div class="card-body">
+        {{#each results.styleSheets}}
+          <p>
+            styleSheetId: {{this.styleSheetId}}<br/>
+            sourceURL:
+              {{#if sourceIsURL}}
+                <a href="{{this.sourceURL}}" target="_blank">{{this.sourceURL}}</a>
+              {{else}}
+                {{this.sourceURL}}
+              {{/if}}
+              <br/>
+            origin: {{this.origin}}<br/>
+            disabled: {{this.disabled}}<br/>
+            isInline: {{this.isInline}}<br/>
+            length: {{this.length}}
+          </p>
+        {{/each}}
+      </div>
+    </div>
+
+    {{#if hasFilteredStylesheets}}
+      <br/>
+      <div class="card">
+        <div class="card-header">
+          <h3>Filtered StyleSheets</h3>
+        </div>
+        <div class="card-body">
+          {{#each results.filteredStyleSheets}}
+            <p>
+              styleSheetId: {{this.styleSheetId}}<br/>
+              sourceURL:
+                {{#if sourceIsURL}}
+                  <a href="{{this.sourceURL}}" target="_blank">{{this.sourceURL}}</a>
+                {{else}}
+                  {{this.sourceURL}}
+                {{/if}}
+                <br/>
+              origin: {{this.origin}}<br/>
+              disabled: {{this.disabled}}<br/>
+              isInline: {{this.isInline}}<br/>
+              length: {{this.length}}
+            </p>
+          {{/each}}
+        </div>
+      </div>
+    {{/if}}
+
+    <br/>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>Settings</h3>
+      </div>
+      <div class="card-body">
+        <form action="/getcss" method="GET">
+          <div class="form-group">
+            <label for="page">URL</label>
+            <input
+              name="page"
+              class="form-control"
+              id="page"
+              placeholder="https://whatcss.info"
+              value="{{results.id}}"
+              >
+          </div>
+          <div class="form-group">
+            <label for="page">Include</label>
+            <input
+              name="include"
+              class="form-control"
+              id="include"
+              placeholder=""
+              value="{{results.includeString}}"
+              >
+          </div>
+          <div class="form-group">
+            <label for="exclude">Exclude</label>
+            <input
+              name="exclude"
+              class="form-control"
+              id="exclude"
+              placeholder=""
+              value="{{results.excludeString}}"
+              >
+          </div>
+          <button type="submit" class="btn btn-primary mb-2">Re-Analyse</button>
+        </form>
+      </div>
+    </div>
   </div>
 </div>

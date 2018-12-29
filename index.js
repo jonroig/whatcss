@@ -84,11 +84,33 @@ app.get('/getcss', (req, res) => {
       return res.send(results);
     }
 
+    // do a little cleanup on the results to make them more
+    // user friendly...
+    Object.keys(results.styleSheets).forEach((styleSheet) => {
+      results.styleSheets[styleSheet].sourceIsURL =
+        results.styleSheets[styleSheet].sourceURL &&
+        (results.styleSheets[styleSheet].sourceURL.indexOf('http://')
+        || results.styleSheets[styleSheet].sourceURL.indexOf('https://'));
+    });
+
+    Object.keys(results.filteredStyleSheets).forEach((styleSheet) => {
+      results.filteredStyleSheets[styleSheet].sourceIsURL =
+        results.filteredStyleSheets[styleSheet].sourceURL &&
+        (results.filteredStyleSheets[styleSheet].sourceURL.indexOf('http://')
+        || results.filteredStyleSheets[styleSheet].sourceURL.indexOf('https://'));
+    });
+
+
     const output = {
       ...results,
       percentage: ((results.bootSize / results.originalSize) * 100).toFixed(2),
-      urlEncodedPage: encodeURIComponent(results.thePage),
+      urlEncodedPage: encodeURIComponent(results.id),
+      includeString: results.includeArray.join(','),
+      excludeString: results.excludeArray.join(','),
+      hasFilteredStylesheets: Object.keys(results.filteredStyleSheets).length > 0,
     };
+
+    console.log('output', output);
 
     return res.render('results', {
       thePage,

@@ -10,6 +10,9 @@ const config = {
   minification: {
     level: 2,
   },
+  browserBot: {
+    waitUntil: 'domcontentloaded',
+  },
 };
 
 module.exports = config;
