@@ -68,7 +68,7 @@ app.get('/getcss', (req, res) => {
   if (!thePageInput) {
     return res.redirect(301, '/getcss?page=whatcss.info');
   }
-  if (thePageInput.indexOf('http://') !== 0 && thePageInput.indexOf('https://') !== 0) {
+  if (thePageInput.toLowerCase().indexOf('http://') !== 0 && thePageInput.toLowerCase().indexOf('https://') !== 0) {
     thePageInput = `http://${thePageInput}`;
   }
 
