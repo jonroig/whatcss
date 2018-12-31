@@ -13,4 +13,22 @@ WhatCSS.info automatically generates a minified version of the bare minimum CSS 
 
 # PM2 
 There's are PM2 start script here:
-```node startScripts/test.js```
+```node startScripts/test.js``` (includes watching)
+```node startScripts/prod.js```
+
+# Installing on AWS
+It might be helpful to install Chrome from scratch on AWS using this script:
+
+```curl https://intoli.com/install-google-chrome.sh | bash```
+
+... then uncomment these lines in the config.js
+
+```
+// headless: true,
+// executablePath: '/usr/bin/google-chrome-stable',
+```
+
+# To do
+* Handle different screensizes and combine the CSS usage information into a single critical path
+* Deal with unused CSS more efficiently
+* Work on scaling issues
