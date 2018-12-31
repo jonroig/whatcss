@@ -22,6 +22,19 @@
         <p>
           <textarea style="width: 100%; height: 200px;">{{results.bootCSS}}</textarea>
         </p>
+        <p>
+          You can <strong>inline the BootCSS and
+            defer the rest of your stylesheets</strong>.
+        </p>
+        <p>
+          See the <a
+            href="https://developers.google.com/speed/docs/insights/OptimizeCSSDelivery#recommendations"
+            title="Google PageSpeed Insights Guide to Optimizing CSS Delivery"
+          >Google PageSpeed Insights Guide to Optimizing CSS Delivery</a> for
+          example code or check out <a
+            href="/#optimize"
+            title="1-2-3: How We Optimized WhatCSS.info">our quick tutorial</a>.
+        </p>
       </div>
     </div>
     <br/>
@@ -29,7 +42,7 @@
     <br/>
     <div class="card">
       <div class="card-header">
-        <h3>Active StyleSheets</h3>
+        <h3>Active CSS StyleSheets</h3>
       </div>
       <div class="card-body">
         {{#each results.styleSheets}}
@@ -51,11 +64,11 @@
       </div>
     </div>
 
-    {{#if hasFilteredStylesheets}}
+    {{#if results.hasFilteredStylesheets}}
       <br/>
       <div class="card">
         <div class="card-header">
-          <h3>Filtered StyleSheets</h3>
+          <h3>Filtered CSS StyleSheets</h3>
         </div>
         <div class="card-body">
           {{#each results.filteredStyleSheets}}

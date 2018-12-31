@@ -22,9 +22,11 @@ const morgan = require('morgan');
 const exphbs = require('express-handlebars');
 const favicon = require('serve-favicon');
 const sqlite3 = require('sqlite3').verbose();
+const urlParse = require('url-parse');
 
 const config = require('./config');
 const fetchCSS = require('./lib/fetchCSS');
+const superpuny = require('./lib/superpuny');
 
 const screenshotDb = new sqlite3.Database('./db/screenshots.db');
 
@@ -58,16 +60,26 @@ app.get('/', (req, res) => {
 
 // the analyser
 app.get('/getcss', (req, res) => {
-  let thePage = req.query.page || false;
+  let thePageInput = req.query.page || false;
   const theFormat = req.query.format || false;
   const includeString = req.query.include || false;
   const excludeString = req.query.exclude || false;
-  if (!thePage) {
+  if (!thePageInput) {
     return res.redirect(301, '/getcss?page=whatcss.info');
   }
-  if (thePage.indexOf('http://') !== 0 && thePage.indexOf('https://') !== 0) {
-    thePage = `http://${thePage}`;
+  if (thePageInput.indexOf('http://') !== 0 && thePageInput.indexOf('https://') !== 0) {
+    thePageInput = `http://${thePageInput}`;
   }
+
+  // do a little cleanup on the input...
+  // gotta support emoji domains... duh!
+  const thePageObj = urlParse(thePageInput);
+  thePageObj.hostname = superpuny.toAscii(thePageObj.hostname);
+  let thePage = thePageObj.protocol;
+  if (thePageObj.slashes) {
+    thePage += '//';
+  }
+  thePage += `${thePageObj.hostname}${thePageObj.pathname}${thePageObj.query}`;
 
   return fetchCSS.get(thePage, includeString, excludeString, theFormat !== 'json').then((results) => {
     if (results.err) {

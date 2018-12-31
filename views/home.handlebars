@@ -2,7 +2,7 @@
 <div class="jumbotron">
   <div class="card bg-dark">
     <div class="card-header">
-      <h1 style="color: white; text-align: center">CSS StyleSheet Page Load Analyser</h1>
+      <h1 style="color: white; text-align: center">WhatCSS is Your Page Using?</h1>
     </div>
     <div class="card-body bg-dark">
       <form action="/getcss" method="GET">
@@ -56,14 +56,15 @@
 <br/>
 <div class="card" id="what">
   <div class="card-header">
-    <h2>WhatCSS: You are Wasting CSS!</h2>
+    <h2>WhatCSS: Shrink Your Initial CSS Pageload by up to 94%?</h2>
   </div>
   <div class="card-body">
     <p>
-      <strong>Shrink your initial CSS page load by up to 94%?</strong>
+      Most of the CSS you deliver to the client on each page load is useless.
     </p>
     <p>
-      <strong>WhatCSS.info</strong> is a free, opensource css page load analyser and optimizer.
+      <strong>WhatCSS.info</strong> is a free, opensource CSS page load analyser
+      and optimizer.
       Brought to you by your friends at
       <a href="https://i❤️.ws" title="Emoji Domains">i❤️.ws emoji domains</a>,
       the app allows you to easily see what CSS styles are required to
@@ -75,6 +76,7 @@
       Dramatically shrink WordPress, Shopify, and Bootstrap themes!
       Decrease load time! <a
         href="https://developers.google.com/speed/docs/insights/OptimizeCSSDelivery"
+        title="Google PageSpeed Insights Guide to Optimizing CSS Delivery"
       >Optimize CSS delivery</a> for SEO!
     </p>
     <p>
@@ -104,16 +106,16 @@
         title="Puppeteer: Headless Chrome Node API">Puppeteer</a>,
       Google's Headless Chrome Node API, to control a remote browser instance, navigate to
       a site, and return which stylesheets are in use when the page is fully loaded.
+      ("domcontentloaded" for the nerds.)
     </p>
     <p>
-      WhatCSS.info takes those results from Chrome, applies extra minification,
-      and presents your CSS in a readable form.
-    </p>
-    <p>
-      CSS Minification provided by
+      WhatCSS.info takes those results from Chrome, applies extra minification
+      with
       <a
         href="https://github.com/jakubpawlowicz/clean-css"
-        title"Clean-CSS CSS Minification">clean-css</a>.
+        title"Clean-CSS CSS Minification">clean-css</a>,
+      and <strong>returns BootCSS: the essential style information a visitor needs
+      to view your site.</strong>
     </p>
   </div>
 </div>
@@ -128,7 +130,7 @@
       That's up to you.
     </p>
     <p>
-      Armed with the minified BootCSS output -- often a tiny fraction of the size of
+      Armed with the minified BootCSS -- often a tiny fraction of the size of
       your site's total CSS load, especially if you're using a WordPress or
       Bootstrap theme -- it's trivial to just load the styles you need, defer the
       rest of the CSS until after the page renders.
@@ -144,14 +146,15 @@
       Good enough for a technology demo, maybe doesn't quite meet your actual needs.
     </p>
     <p>
-      An easy variation of this might be to inline the BootCSS and defer the
-      load of the rest of the CSS. This way, the page becomes immediately
-      interactive, but the styles needed for additional interaction
+      There's an example of how to do this in the next section, but an easy
+      variation of this might be to <strong>inline the BootCSS and defer the
+      load of the rest of the CSS</strong>. This way, the page becomes immediately
+      interactive, but the styles needed for additional exploration
       come along shortly thereafter.
     </p>
     <p>
       This approach also alleviates the need to make any hard choices when it comes
-      to cutting CSS, especially if you're just loading something off a CDN.
+      to cutting CSS, especially if you're just loading some random theme off a CDN.
     </p>
     <p>
       With WhatCSS having an API and being opensource and whatnot,
@@ -177,6 +180,7 @@
       Like all things SEO, we followed the
       <a
         href="https://developers.google.com/speed/docs/insights/OptimizeCSSDelivery"
+        title="Google PageSpeed Insights Guide to Optimizing CSS Delivery"
       >Google PageSpeed Insights Guide to Optimizing CSS Delivery</a>.
     </p>
     <p>
@@ -187,7 +191,7 @@
         Determine what stylesheets are being used from the Bootstrap CDN.
         <br/>
         <code>
-          https://whatcss.info?page=https://whatcss.info&include=stackpath.bootstrapcdn.com&exclude=inline
+          https://whatcss.info/getcss?page=https://whatcss.info&include=stackpath.bootstrapcdn.com&exclude=inline
         </code>
       </li>
       <li>
@@ -197,6 +201,7 @@
       <li>
         Defer Bootstrap using the <a
           href="https://developers.google.com/speed/docs/insights/OptimizeCSSDelivery"
+          title="Google PageSpeed Insights Guide to Optimizing CSS Delivery"
         >Google CSS Optimization JavaScript example</a>.
       </li>
     </ol>
@@ -210,7 +215,7 @@
 <br/>
 <div class="card" id="api">
   <div class="card-header">
-    <h2>What CSS API</h2>
+    <h2>WhatCSS API</h2>
   </div>
   <div class="card-body">
     <p>
@@ -255,7 +260,7 @@
       <br/>
     </p>
     <code>
-      https://whatcss.info/getcss?page=https://whatcss.info&format=json&include=domain1.com,domain2.com,inline
+      https://whatcss.info/getcss?page=https://whatcss.info&include=stackpath.bootstrapcdn.com,facebook.com&exclude=inline
     </code>
   </div>
 </div>
@@ -269,7 +274,7 @@
   <div class="card-body">
     <p>
       Twitter: <a href="https://twitter.com/emoji_domains" title="Emoji Domains on Twitter">@emoji_domains</a><br/>
-      Github: <a href="https://github.com/jonroig/whatcss.info" title="WhatCSS.info: CSS StyleSheet Pageload Analyser/Optimizer on Github">github.com/jonroig/whatcss.info</a>
+      Github: <a href="https://github.com/jonroig/whatcss" title="WhatCSS.info: CSS StyleSheet Pageload Analyser/Optimizer on Github">github.com/jonroig/whatcss</a>
     </p>
   </div>
 </div>
