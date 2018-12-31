@@ -10,7 +10,11 @@ const config = {
   minification: {
     level: 2,
   },
-  browserBot: {
+  puppeteer: {
+    launchConfig: {
+      // headless: true,
+      // executablePath: '/usr/bin/google-chrome-stable',
+    },
     waitUntil: 'domcontentloaded',
   },
 };

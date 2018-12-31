@@ -122,8 +122,6 @@ app.get('/getcss', (req, res) => {
       hasFilteredStylesheets: Object.keys(results.filteredStyleSheets).length > 0,
     };
 
-    console.log('output', output);
-
     return res.render('results', {
       thePage,
       results: output,
