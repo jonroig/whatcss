@@ -17,6 +17,10 @@ const config = {
     },
     waitUntil: 'domcontentloaded',
   },
+  analytics: `
+    <!-- google analytics code might go here -->
+  `,
+
 };
 
 module.exports = config;
