@@ -43,7 +43,7 @@ app.use('/images', express.static(`${__dirname}/webcontent/images`));
 
 // home
 app.get('/', (req, res) => {
-  const selectSQL = 'SELECT id, dateTS, thePage, originalSize, newSize FROM screenshots ORDER BY dateTS DESC';
+  const selectSQL = `SELECT id, dateTS, thePage, originalSize, newSize FROM screenshots ORDER BY dateTS DESC LIMIT ${config.screenshotsArchive.numberToArchive}`;
   screenshotDb.all(selectSQL, [], (err, rows) => {
     const screenshotArray = rows.map(row => ({
       ...row,
