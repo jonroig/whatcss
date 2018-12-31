@@ -38,6 +38,7 @@ app.set('view engine', 'handlebars');
 app.use(compression({ threshold: 0 }));
 app.use(morgan('combined'));
 app.use(favicon(`${__dirname}/webcontent/favicon.ico`));
+app.use('/images', express.static(`${__dirname}/webcontent/images`));
 
 
 // home
