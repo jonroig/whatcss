@@ -82,7 +82,13 @@ app.get('/getcss', (req, res) => {
   }
   thePage += `${thePageObj.hostname}${thePageObj.pathname}${thePageObj.query}`;
 
-  return fetchCSS.get(thePage, includeString, excludeString, theFormat !== 'json').then((results) => {
+  const params = {
+    includeString,
+    excludeString,
+    doScreenshot: theFormat !== 'json',
+  };
+
+  return fetchCSS.get(thePage, params).then((results) => {
     if (results.err) {
       if (theFormat === 'json') {
         return res.send({
