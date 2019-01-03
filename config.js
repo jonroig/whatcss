@@ -16,6 +16,7 @@ const config = {
       // executablePath: '/usr/bin/google-chrome-stable',
     },
     waitUntil: 'domcontentloaded',
+    userAgent: 'WhatCSS.info/bot',
   },
   analytics: `
     <!-- google analytics code might go here -->
