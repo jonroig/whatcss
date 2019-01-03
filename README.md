@@ -6,13 +6,14 @@ WhatCSS: CSS StyleSheet Pageload Analyser/Optimizer 🤷
 # About
 WhatCSS.info automatically generates a minified version of the bare minimum CSS a user needs to begin interacting with your site.
 
-# Install
+# Install and Run
 * ```git clone https://github.com/jonroig/whatcss.git```
 * ```npm install```
 * ```node index.js```
 
 # PM2 
-There are PM2 start script here:
+There are PM2 start scripts here:
+
 ```node startScripts/test.js``` (includes watching)
 
 ```node startScripts/prod.js```
