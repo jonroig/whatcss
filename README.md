@@ -11,6 +11,13 @@ WhatCSS.info automatically generates a minified version of the bare minimum CSS 
 * ```npm install```
 * ```node index.js```
 
+# CLI
+WhatCSS can optimize CSS usage on webpages from the command line.
+
+```node whatcss https://whatcss.info -i stackpath.bootstrapcdn.com,facebook.com -e inline```
+
+Output is a bunch of JSON. If you elect to take a screenshot, it'll return in PNG/base64 as part of the JSON package.
+
 # PM2 
 There are PM2 start scripts here:
 
@@ -34,4 +41,3 @@ It might be helpful to install Chrome from scratch on AWS using this script:
 * Handle different screensizes and combine the CSS usage information into a single critical path
 * Deal with unused CSS more efficiently
 * Work on scaling issues (maybe use a single browser instance?)
-* CLI support
