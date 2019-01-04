@@ -6,14 +6,16 @@ WhatCSS: CSS StyleSheet Pageload Analyser/Optimizer 🤷
 # About
 WhatCSS.info automatically generates a minified version of the bare minimum CSS a user needs to begin interacting with your site.
 
-# Install
-* Clone the repo
+# Install and Run
+* ```git clone https://github.com/jonroig/whatcss.git```
 * ```npm install```
 * ```node index.js```
 
 # PM2 
-There's are PM2 start script here:
+There are PM2 start scripts here:
+
 ```node startScripts/test.js``` (includes watching)
+
 ```node startScripts/prod.js```
 
 # Installing on AWS
@@ -31,4 +33,5 @@ It might be helpful to install Chrome from scratch on AWS using this script:
 # To do
 * Handle different screensizes and combine the CSS usage information into a single critical path
 * Deal with unused CSS more efficiently
-* Work on scaling issues
+* Work on scaling issues (maybe use a single browser instance?)
+* CLI support
