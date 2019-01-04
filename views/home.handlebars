@@ -157,7 +157,7 @@
       to cutting CSS, especially if you're just loading some random theme off a CDN.
     </p>
     <p>
-      With WhatCSS having an API and being opensource and whatnot,
+      With WhatCSS having an API/CLI and being opensource and whatnot,
       it can be integrated to a build process,
       automating the BootCSS generation.
     </p>
@@ -226,14 +226,43 @@
       Pretty straightforward: just append "&format=json" to the URL
       and it'll... return JSON.
     </p>
-
     <code>
       https://whatcss.info/getcss?page=https://whatcss.info&format=json
     </code>
-
     <br/>
   </div>
+</div>
 
+
+<br/>
+<div class="card" id="api">
+  <div class="card-header">
+    <h2>WhatCSS CLI</h2>
+  </div>
+  <div class="card-body">
+    <p>
+      You can run WhatCSS from the command line, but you've got
+      to hop over to
+      <a
+        href="https://github.com/jonroig/whatcss"
+        title="WhatCSS: Critical Path CSS analyser on Github"
+      >github.com/jonroig/whatcss</a> to get it.
+    </p>
+    <p>
+      You'll have to have Nodejs on your machine and do the standard
+      <code>npm install</code>.
+    </p>
+    <p>
+      Example usage:<br/>
+      <code>
+        node whatcss https://whatcss.info -i stackpath.bootstrapcdn.com,facebook.com -e inline
+      </code>
+    </p>
+    <p>
+      Output is a bunch of JSON. If you elect to take a screenshot, it'll
+      return in PNG/base64 as part of the JSON package.
+    </p>
+  </div>
 </div>
 
 

@@ -145,7 +145,7 @@ app.get('/img/:id', (req, res) => {
   }
 
   const selectSQL = 'SELECT pngData from screenshots WHERE id = ?';
-  screenshotDb.all(selectSQL, [imgId], (err, rows) => {
+  return screenshotDb.all(selectSQL, [imgId], (err, rows) => {
     if (err || !rows[0] || !rows[0].pngData) {
       console.log(err || 'no img data');
       return res.send();
