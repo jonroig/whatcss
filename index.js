@@ -25,7 +25,7 @@ const sqlite3 = require('sqlite3').verbose();
 const urlParse = require('url-parse');
 
 const config = require('./config');
-const fetchCSS = require('./lib/fetchCSS');
+const { fetchCSS, closeBrowser } = require('./lib/fetchCSS');
 const superpuny = require('./lib/superpuny');
 
 const screenshotDb = new sqlite3.Database('./db/screenshots.db');
@@ -153,6 +153,12 @@ app.get('/img/:id', (req, res) => {
     const img = Buffer.from(rows[0].pngData, 'base64');
     return res.type('image/png').send(img);
   });
+});
+
+
+// exit handler
+process.on('SIGINT', () => {
+  closeBrowser();
 });
 
 // start the app
